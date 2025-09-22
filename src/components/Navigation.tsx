@@ -40,11 +40,11 @@ const Navigation = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden md:flex">
+          {/* <div className="hidden md:flex">
             <Button className="bg-forest hover:bg-forest-light text-white px-6 py-2 rounded-xl">
               Get Started
             </Button>
-          </div>
+          </div> */}
 
           {/* Mobile menu button */}
           <div className="md:hidden">
@@ -73,11 +73,11 @@ const Navigation = () => {
                   {item.name}
                 </a>
               ))}
-              <div className="px-3 py-2">
+              {/* <div className="px-3 py-2">
                 <Button className="w-full bg-forest hover:bg-forest-light text-white rounded-xl">
                   Get Started
                 </Button>
-              </div>
+              </div> */}
             </div>
           </div>
         )}

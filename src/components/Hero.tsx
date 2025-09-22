@@ -32,9 +32,9 @@ const Hero = () => {
 
         {/* CTA Buttons with animations */}
         <div className="flex flex-col sm:flex-row gap-6 justify-start mb-20 animate-slide-up" style={{animationDelay: '0.4s'}}>
-          <Button size="lg" className="bg-golden hover:bg-golden-bright text-white px-12 py-8 text-xl font-semibold rounded-2xl shadow-glow-primary group transition-all duration-300 hover:scale-105">
+          <Button size="lg" className="bg-golden hover:bg-golden-bright text-white px-12 py-8 text-xl font-semibold rounded-2xl shadow-glow-primary group transition-all duration-300 hover:scale-105" onClick={() => window.location.href = '#contact'}>
             <Play className="mr-3 h-6 w-6 group-hover:scale-110 transition-transform" />
-            Start Your Project
+            Start Your Journey
             <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>

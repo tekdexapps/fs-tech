@@ -135,10 +135,10 @@ const Services = () => {
             </div>
             <h3 className="text-3xl font-bold mb-4 text-gradient-primary">Ready to Transform Your Business?</h3>
             <p className="text-xl text-text-secondary mb-8">Let's discuss how our innovative solutions can accelerate your digital transformation</p>
-            <Button size="lg" className="bg-gradient-to-r from-emerald to-cyan hover:from-emerald/90 hover:to-cyan/90 text-white px-12 py-6 text-xl font-semibold rounded-2xl shadow-glow-primary">
+            {/* <Button size="lg" className="bg-gradient-to-r from-emerald to-cyan hover:from-emerald/90 hover:to-cyan/90 text-white px-12 py-6 text-xl font-semibold rounded-2xl shadow-glow-primary">
               Get Started Today
               <ArrowRight className="ml-3 h-6 w-6" />
-            </Button>
+            </Button> */}
           </div>
         </div>
       </div>
