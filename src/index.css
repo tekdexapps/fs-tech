@@ -1,0 +1,287 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Creative modern tech design system */
+
+@layer base {
+  :root {
+    /* Light Theme - Based on uploaded color palette */
+    --background: 0 0% 98%;
+    --foreground: 25 35% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 25 35% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 25 35% 15%;
+
+    --primary: 45 95% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 15 85% 53%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 95%;
+    --muted-foreground: 25 25% 45%;
+
+    --accent: 195 15% 68%;
+    --accent-foreground: 25 35% 15%;
+
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 96%;
+    --ring: 45 95% 60%;
+
+    --radius: 0.75rem;
+
+    /* Light theme design tokens from color palette */
+    --surface: 0 0% 100%;
+    --surface-elevated: 0 0% 98%;
+    --surface-glass: 45 95% 60% / 0.1;
+    --text-primary: 25 35% 15%;
+    --text-secondary: 25 25% 35%;
+    --text-muted: 25 15% 55%;
+    
+    /* Color Palette from uploaded image - Light version */
+    --golden: 45 95% 60%;
+    --golden-bright: 45 95% 70%;
+    --orange-red: 15 85% 53%;
+    --orange-red-bright: 15 85% 63%;
+    --warm-gray: 195 15% 68%;
+    --warm-gray-bright: 195 15% 78%;
+    --warm-amber: 40 90% 55%;
+    --warm-amber-bright: 40 90% 65%;
+    
+    /* Light theme effects */
+    --shadow-soft: 0 0% 0% / 0.1;
+    --shadow-strong: 0 0% 0% / 0.15;
+    --shadow-colored: 45 95% 60% / 0.2;
+    --glow-primary: 45 95% 60% / 0.3;
+    --glow-accent: 15 85% 53% / 0.2;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark mode uses same colors as root for consistency */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+@layer utilities {
+  .text-gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--golden)), hsl(var(--golden-bright)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-gradient-accent {
+    background: linear-gradient(135deg, hsl(var(--orange-red)), hsl(var(--warm-amber)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .shadow-glow-primary {
+    box-shadow: 0 0 60px hsl(var(--glow-primary)), 0 0 100px hsl(var(--glow-primary));
+  }
+  
+  .shadow-glow-accent {
+    box-shadow: 0 0 40px hsl(var(--glow-accent));
+  }
+  
+  .shadow-card-elevated {
+    box-shadow: 0 8px 32px hsl(var(--shadow-strong)), 0 4px 16px hsl(var(--shadow-colored));
+  }
+  
+  .bg-glass {
+    background: hsl(var(--surface-glass));
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border));
+  }
+  
+  .bg-grid {
+    background-image: 
+      linear-gradient(hsl(var(--border)) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.3;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+  
+  .animate-slide-up {
+    animation: slide-up 0.8s ease-out forwards;
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 1s ease-out forwards;
+  }
+  
+  .animate-bounce-in {
+    animation: bounce-in 1.2s ease-out forwards;
+  }
+  
+  .animate-slide-left {
+    animation: slide-left 1s ease-out forwards;
+  }
+  
+  .animate-slide-right {
+    animation: slide-right 1s ease-out forwards;
+  }
+  
+  .animate-scroll-reveal {
+    animation: scroll-reveal 0.8s ease-out forwards;
+  }
+  
+  .shadow-glow-primary {
+    box-shadow: 0 0 60px hsl(var(--glow-primary)), 0 0 100px hsl(var(--glow-primary));
+  }
+  
+  .shadow-glow-accent {
+    box-shadow: 0 0 40px hsl(var(--glow-accent));
+  }
+  
+  .shadow-card-elevated {
+    box-shadow: 0 8px 32px hsl(var(--shadow-strong)), 0 4px 16px hsl(var(--shadow-colored));
+  }
+  
+  .bg-glass {
+    background: hsl(var(--surface-glass));
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border));
+  }
+  
+  .bg-grid {
+    background-image: 
+      linear-gradient(hsl(var(--border)) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.1;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px hsl(var(--glow-primary)); }
+  50% { box-shadow: 0 0 40px hsl(var(--glow-primary)), 0 0 60px hsl(var(--glow-primary)); }
+}
+
+@keyframes slide-up {
+  0% { 
+    opacity: 0; 
+    transform: translateY(60px); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes fade-in {
+  0% { 
+    opacity: 0; 
+  }
+  100% { 
+    opacity: 1; 
+  }
+}
+
+@keyframes bounce-in {
+  0% { 
+    opacity: 0; 
+    transform: scale(0.3); 
+  }
+  50% { 
+    transform: scale(1.05); 
+  }
+  70% { 
+    transform: scale(0.9); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: scale(1); 
+  }
+}
+
+@keyframes slide-left {
+  0% { 
+    opacity: 0; 
+    transform: translateX(60px); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateX(0); 
+  }
+}
+
+@keyframes slide-right {
+  0% { 
+    opacity: 0; 
+    transform: translateX(-60px); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateX(0); 
+  }
+}
+
+@keyframes scroll-reveal {
+  0% { 
+    opacity: 0; 
+    transform: translateY(30px) scale(0.95); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0) scale(1); 
+  }
+}
