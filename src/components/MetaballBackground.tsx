@@ -52,8 +52,8 @@ const MetaballBackground = () => {
       specularPower: 12,
       fresnelPower: 1.8,
       backgroundColor: new THREE.Color().setHSL(0, 0, 0.98), // --background
-      sphereColor: new THREE.Color().setHSL(51/360, 0.95, 0.60), // Rich golden color
-      lightColor: new THREE.Color().setHSL(51/360, 0.90, 0.70), // Golden light
+      sphereColor: new THREE.Color().setHSL(0.167, 1.0, 0.60), // Rich golden color
+      lightColor: new THREE.Color().setHSL(62/360, 1.0, 0.60), // Golden light
       lightPosition: new THREE.Vector3(0.8, 1.2, 1.0),
       smoothness: 0.3,
       contrast: 1.6,
