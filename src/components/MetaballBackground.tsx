@@ -18,7 +18,7 @@ const MetaballBackground = () => {
     material: null,
     clock: null,
     animationId: null,
-    cleanup: null
+    cleanup: null,
   });
 
   useEffect(() => {
@@ -33,10 +33,18 @@ const MetaballBackground = () => {
     let animationId: number;
 
     // Device detection and optimization
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const isMobile =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      );
     const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-    const isLowPowerDevice = isMobile || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
-    const devicePixelRatio = Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2);
+    const isLowPowerDevice =
+      isMobile ||
+      (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
+    const devicePixelRatio = Math.min(
+      window.devicePixelRatio || 1,
+      isMobile ? 1.5 : 2
+    );
 
     // Mouse tracking
     const targetMousePosition = new THREE.Vector2(0.5, 0.5);
@@ -51,16 +59,16 @@ const MetaballBackground = () => {
       specularIntensity: 2.0,
       specularPower: 12,
       fresnelPower: 1.8,
-      backgroundColor: new THREE.Color().setHSL(0, 0, 0.98), // --background
-      sphereColor: new THREE.Color().setHSL(0.167, 1.0, 0.60), // Rich golden color
-      lightColor: new THREE.Color().setHSL(62/360, 1.0, 0.60), // Golden light
+      backgroundColor: new THREE.Color().setHSL(0.139, 1.0, 0.95), // Soft golden background
+      sphereColor: new THREE.Color().setHSL(0.139, 1.0, 0.55), // Rich golden color
+      lightColor: new THREE.Color().setHSL(0.139, 1.0, 0.6), // Golden light
       lightPosition: new THREE.Vector3(0.8, 1.2, 1.0),
       smoothness: 0.3,
       contrast: 1.6,
       fogDensity: 0.015,
       cursorGlowIntensity: 0.1,
       cursorGlowRadius: 0.5,
-      cursorGlowColor: new THREE.Color().setHSL(45/360, 0.85, 0.70), // Golden glow for depth
+      cursorGlowColor: new THREE.Color().setHSL(45 / 360, 0.85, 0.7), // Golden glow for depth
       fixedTopLeftRadius: 0.8,
       fixedBottomRightRadius: 0.9,
       smallTopLeftRadius: 0.3,
@@ -73,7 +81,7 @@ const MetaballBackground = () => {
       mergeDistance: 1.5,
       mouseProximityEffect: true,
       minMovementScale: 0.3,
-      maxMovementScale: 1.0
+      maxMovementScale: 1.0,
     };
 
     const init = () => {
@@ -87,7 +95,7 @@ const MetaballBackground = () => {
         alpha: true,
         powerPreference: isMobile ? "default" : "high-performance",
         preserveDrawingBuffer: false,
-        premultipliedAlpha: false
+        premultipliedAlpha: false,
       });
 
       const pixelRatio = Math.min(devicePixelRatio, isMobile ? 1.5 : 2);
@@ -115,8 +123,15 @@ const MetaballBackground = () => {
       material = new THREE.ShaderMaterial({
         uniforms: {
           uTime: { value: 0 },
-          uResolution: { value: new THREE.Vector2(viewportWidth, viewportHeight) },
-          uActualResolution: { value: new THREE.Vector2(viewportWidth * pixelRatio, viewportHeight * pixelRatio) },
+          uResolution: {
+            value: new THREE.Vector2(viewportWidth, viewportHeight),
+          },
+          uActualResolution: {
+            value: new THREE.Vector2(
+              viewportWidth * pixelRatio,
+              viewportHeight * pixelRatio
+            ),
+          },
           uPixelRatio: { value: pixelRatio },
           uMousePosition: { value: new THREE.Vector2(0.5, 0.5) },
           uCursorSphere: { value: new THREE.Vector3(0, 0, 0) },
@@ -149,7 +164,7 @@ const MetaballBackground = () => {
           uCursorGlowColor: { value: settings.cursorGlowColor },
           uIsSafari: { value: isSafari ? 1.0 : 0.0 },
           uIsMobile: { value: isMobile ? 1.0 : 0.0 },
-          uIsLowPower: { value: isLowPowerDevice ? 1.0 : 0.0 }
+          uIsLowPower: { value: isLowPowerDevice ? 1.0 : 0.0 },
         },
         vertexShader: `
           varying vec2 vUv;
@@ -159,7 +174,11 @@ const MetaballBackground = () => {
           }
         `,
         fragmentShader: `
-          ${isMobile || isSafari || isLowPowerDevice ? "precision mediump float;" : "precision highp float;"}
+          ${
+            isMobile || isSafari || isLowPowerDevice
+              ? "precision mediump float;"
+              : "precision highp float;"
+          }
           
           uniform float uTime;
           uniform vec2 uResolution;
@@ -448,7 +467,7 @@ const MetaballBackground = () => {
             }
           }
         `,
-        transparent: true
+        transparent: true,
       });
 
       const geometry = new THREE.PlaneGeometry(2, 2);
@@ -458,7 +477,7 @@ const MetaballBackground = () => {
       // Initialize cursor position
       onPointerMove({
         clientX: window.innerWidth / 2,
-        clientY: window.innerHeight / 2
+        clientY: window.innerHeight / 2,
       });
     };
 
@@ -484,7 +503,7 @@ const MetaballBackground = () => {
         screenToWorldJS(0.92, 0.92),
         screenToWorldJS(0.75, 0.72),
         screenToWorldJS(0.08, 0.08),
-        screenToWorldJS(0.28, 0.25)
+        screenToWorldJS(0.28, 0.25),
       ];
 
       fixedPositions.forEach((pos) => {
@@ -492,9 +511,15 @@ const MetaballBackground = () => {
         closestDistance = Math.min(closestDistance, dist);
       });
 
-      const proximityFactor = Math.max(0, 1.0 - closestDistance / settings.mergeDistance);
-      const smoothFactor = proximityFactor * proximityFactor * (3.0 - 2.0 * proximityFactor);
-      const dynamicRadius = settings.cursorRadiusMin + (settings.cursorRadiusMax - settings.cursorRadiusMin) * smoothFactor;
+      const proximityFactor = Math.max(
+        0,
+        1.0 - closestDistance / settings.mergeDistance
+      );
+      const smoothFactor =
+        proximityFactor * proximityFactor * (3.0 - 2.0 * proximityFactor);
+      const dynamicRadius =
+        settings.cursorRadiusMin +
+        (settings.cursorRadiusMax - settings.cursorRadiusMin) * smoothFactor;
 
       if (material) {
         material.uniforms.uCursorSphere.value.copy(cursorSphere3D);
@@ -513,7 +538,10 @@ const MetaballBackground = () => {
         renderer.setPixelRatio(currentPixelRatio);
 
         material.uniforms.uResolution.value.set(width, height);
-        material.uniforms.uActualResolution.value.set(width * currentPixelRatio, height * currentPixelRatio);
+        material.uniforms.uActualResolution.value.set(
+          width * currentPixelRatio,
+          height * currentPixelRatio
+        );
         material.uniforms.uPixelRatio.value = currentPixelRatio;
       }
     };
@@ -527,8 +555,10 @@ const MetaballBackground = () => {
       if (!material || !clock || !renderer || !scene || !camera) return;
 
       // Smooth mouse movement
-      mousePosition.x += (targetMousePosition.x - mousePosition.x) * settings.mouseSmoothness;
-      mousePosition.y += (targetMousePosition.y - mousePosition.y) * settings.mouseSmoothness;
+      mousePosition.x +=
+        (targetMousePosition.x - mousePosition.x) * settings.mouseSmoothness;
+      mousePosition.y +=
+        (targetMousePosition.y - mousePosition.y) * settings.mouseSmoothness;
 
       material.uniforms.uTime.value = clock.getElapsedTime();
       material.uniforms.uMousePosition.value = mousePosition;
@@ -560,35 +590,43 @@ const MetaballBackground = () => {
       if (animationId) {
         cancelAnimationFrame(animationId);
       }
-      
+
       window.removeEventListener("mousemove", handlePointerMove);
       window.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("resize", onWindowResize);
-      
+
       if (renderer) {
         renderer.dispose();
         if (renderer.domElement && renderer.domElement.parentNode) {
           renderer.domElement.parentNode.removeChild(renderer.domElement);
         }
       }
-      
+
       if (material) {
         material.dispose();
       }
-      
+
       if (scene) {
         scene.clear();
       }
     };
 
-    sceneRef.current = { scene, camera, renderer, material, clock, animationId, cleanup };
+    sceneRef.current = {
+      scene,
+      camera,
+      renderer,
+      material,
+      clock,
+      animationId,
+      cleanup,
+    };
 
     return cleanup;
   }, []);
 
   return (
-    <div 
-      ref={containerRef} 
+    <div
+      ref={containerRef}
       className="absolute inset-0"
       style={{ zIndex: 1 }}
     />
