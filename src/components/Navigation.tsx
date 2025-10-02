@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import fsLogo from "@/assets/logo.png";
+import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,16 +14,12 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <img 
-              src={fsLogo} 
-              alt="FS Technology" 
-              className="h-10 w-auto"
-            />
+            <img src={fsLogo} alt="FS Technology" className="h-10 w-auto" />
           </div>
 
           {/* Desktop Navigation */}
@@ -32,7 +28,7 @@ const Navigation = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-text-secondary hover:text-forest transition-colors duration-200 font-medium"
+                className="text-gray-700 hover:text-forest transition-colors duration-200 font-medium"
               >
                 {item.name}
               </a>
@@ -52,9 +48,13 @@ const Navigation = () => {
               variant="ghost"
               size="sm"
               onClick={() => setIsOpen(!isOpen)}
-              className="text-foreground"
+              className="text-gray-700"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </Button>
           </div>
         </div>
@@ -62,12 +62,12 @@ const Navigation = () => {
         {/* Mobile Navigation */}
         {isOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-surface/95 backdrop-blur-md rounded-xl mt-2 border border-border">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-white/95 backdrop-blur-md rounded-xl mt-2 border border-gray-200">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="block px-3 py-2 text-text-secondary hover:text-forest hover:bg-forest/5 rounded-lg transition-colors duration-200"
+                  className="block px-3 py-2 text-gray-700 hover:text-forest hover:bg-forest/5 rounded-lg transition-colors duration-200"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}

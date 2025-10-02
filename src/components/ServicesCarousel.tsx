@@ -1,63 +1,157 @@
-import useEmblaCarousel from 'embla-carousel-react';
-import { useCallback, useEffect, useState } from 'react';
-import { ChevronLeft, ChevronRight, Monitor, Smartphone, Cloud, Database, Shield, Zap } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import Autoplay from 'embla-carousel-autoplay';
+import Autoplay from "embla-carousel-autoplay";
+import useEmblaCarousel from "embla-carousel-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Cloud,
+  Cpu,
+  Database,
+  GitBranch,
+  Monitor,
+  Server,
+  Shield,
+  Smartphone,
+  Workflow,
+  Zap,
+} from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
 
 const services = [
   {
+    icon: Workflow,
+    title: "ServiceNow Development",
+    description:
+      "Custom ServiceNow implementations, workflows, and enterprise service management.",
+    color: "warm-amber",
+    features: [
+      "Custom Applications",
+      "Workflow Automation",
+      "ITSM/ITOM",
+      "Integration Hub",
+    ],
+  },
+  {
     icon: Monitor,
     title: "Web Development",
-    description: "Custom web applications built with modern frameworks and cutting-edge technologies.",
+    description:
+      "Custom web applications built with modern frameworks and cutting-edge technologies.",
     color: "golden",
-    features: ["React & Next.js", "TypeScript", "Modern UI/UX", "Performance Optimized"]
+    features: [
+      "React & Next.js",
+      "TypeScript",
+      "Modern UI/UX",
+      "Performance Optimized",
+    ],
   },
   {
     icon: Smartphone,
     title: "Mobile Development",
-    description: "Native and cross-platform mobile apps that deliver exceptional user experiences.",
+    description:
+      "Native and cross-platform mobile apps that deliver exceptional user experiences.",
     color: "orange-red",
-    features: ["iOS & Android", "React Native", "Flutter", "App Store Ready"]
+    features: ["iOS & Android", "React Native", "Flutter", "App Store Ready"],
   },
   {
     icon: Cloud,
     title: "Cloud Solutions",
-    description: "Scalable cloud infrastructure and deployment solutions for your applications.",
+    description:
+      "Scalable cloud infrastructure and deployment solutions for your applications.",
     color: "warm-amber",
-    features: ["AWS & Azure", "DevOps", "Auto Scaling", "Monitoring"]
+    features: ["AWS & Azure", "DevOps", "Auto Scaling", "Monitoring"],
   },
   {
     icon: Database,
     title: "Database Design",
-    description: "Robust database architecture and optimization for maximum performance.",
+    description:
+      "Robust database architecture and optimization for maximum performance.",
     color: "warm-gray",
-    features: ["SQL & NoSQL", "Data Modeling", "Performance Tuning", "Backup & Recovery"]
+    features: [
+      "SQL & NoSQL",
+      "Data Modeling",
+      "Performance Tuning",
+      "Backup & Recovery",
+    ],
   },
   {
     icon: Shield,
     title: "Security Solutions",
-    description: "Comprehensive security implementation to protect your digital assets.",
+    description:
+      "Comprehensive security implementation to protect your digital assets.",
     color: "golden",
-    features: ["Encryption", "Authentication", "Vulnerability Testing", "Compliance"]
+    features: [
+      "Encryption",
+      "Authentication",
+      "Vulnerability Testing",
+      "Compliance",
+    ],
   },
   {
     icon: Zap,
     title: "Performance Optimization",
-    description: "Speed up your applications with advanced optimization techniques.",
+    description:
+      "Speed up your applications with advanced optimization techniques.",
     color: "orange-red",
-    features: ["Code Splitting", "Caching", "CDN Integration", "Bundle Optimization"]
-  }
+    features: [
+      "Code Splitting",
+      "Caching",
+      "CDN Integration",
+      "Bundle Optimization",
+    ],
+  },
+  {
+    icon: Server,
+    title: "Backend Development",
+    description:
+      "Robust server-side solutions and API development for scalable applications.",
+    color: "warm-gray",
+    features: [
+      "Node.js & Python",
+      "REST & GraphQL",
+      "Microservices",
+      "API Design",
+    ],
+  },
+  {
+    icon: Cpu,
+    title: "System Architecture",
+    description:
+      "Enterprise-level system design and architectural solutions for complex requirements.",
+    color: "golden",
+    features: [
+      "System Design",
+      "Scalability Planning",
+      "Tech Stack Selection",
+      "Best Practices",
+    ],
+  },
+  {
+    icon: GitBranch,
+    title: "DevOps & CI/CD",
+    description:
+      "Streamlined development workflows and automated deployment pipelines.",
+    color: "orange-red",
+    features: [
+      "CI/CD Pipelines",
+      "Docker & Kubernetes",
+      "Infrastructure as Code",
+      "GitOps",
+    ],
+  },
 ];
 
 const ServicesCarousel = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ 
-    loop: true,
-    align: 'start',
-    skipSnaps: false,
-    dragFree: true,
-    duration: 30
-  }, [Autoplay({ delay: 3000, stopOnInteraction: false })]);
-  
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    {
+      loop: true,
+      align: "start",
+      skipSnaps: false,
+      dragFree: true,
+      duration: 30,
+    },
+    [Autoplay({ delay: 3000, stopOnInteraction: false })]
+  );
+
   const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
   const [nextBtnDisabled, setNextBtnDisabled] = useState(true);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -71,9 +165,12 @@ const ServicesCarousel = () => {
     if (emblaApi) emblaApi.scrollNext();
   }, [emblaApi]);
 
-  const scrollTo = useCallback((index: number) => {
-    if (emblaApi) emblaApi.scrollTo(index);
-  }, [emblaApi]);
+  const scrollTo = useCallback(
+    (index: number) => {
+      if (emblaApi) emblaApi.scrollTo(index);
+    },
+    [emblaApi]
+  );
 
   const onInit = useCallback((emblaApi: any) => {
     setScrollSnaps(emblaApi.scrollSnapList());
@@ -90,9 +187,9 @@ const ServicesCarousel = () => {
 
     onInit(emblaApi);
     onSelect(emblaApi);
-    emblaApi.on('reInit', onInit);
-    emblaApi.on('reInit', onSelect);
-    emblaApi.on('select', onSelect);
+    emblaApi.on("reInit", onInit);
+    emblaApi.on("reInit", onSelect);
+    emblaApi.on("select", onSelect);
   }, [emblaApi, onInit, onSelect]);
 
   return (
@@ -100,7 +197,10 @@ const ServicesCarousel = () => {
       {/* Background Elements */}
       <div className="absolute inset-0 bg-grid opacity-50"></div>
       <div className="absolute top-20 left-20 w-32 h-32 bg-golden/10 rounded-full blur-3xl animate-float"></div>
-      <div className="absolute bottom-20 right-20 w-48 h-48 bg-orange-red/10 rounded-full blur-3xl animate-float" style={{animationDelay: '2s'}}></div>
+      <div
+        className="absolute bottom-20 right-20 w-48 h-48 bg-orange-red/10 rounded-full blur-3xl animate-float"
+        style={{ animationDelay: "2s" }}
+      ></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
@@ -109,7 +209,11 @@ const ServicesCarousel = () => {
             Our <span className="text-gradient-primary">Services</span>
           </h2>
           <p className="text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed">
-            Comprehensive technology solutions designed to <span className="text-gradient-accent font-semibold">elevate your business</span> to new heights
+            Comprehensive technology solutions designed to{" "}
+            <span className="text-gradient-accent font-semibold">
+              elevate your business
+            </span>{" "}
+            to new heights
           </p>
         </div>
 
@@ -120,32 +224,54 @@ const ServicesCarousel = () => {
               {services.map((service, index) => {
                 const IconComponent = service.icon;
                 return (
-                  <div key={index} className="flex-[0_0_350px] min-w-0 pl-6 animate-fade-in hover:scale-105 transition-all duration-500" style={{animationDelay: `${index * 0.1}s`}}>
-                    <div className={`group h-full p-8 rounded-3xl bg-glass border border-${service.color}/20 hover:border-${service.color}/40 transition-all duration-500 hover:shadow-card-elevated transform hover:-translate-y-2`}>
-                      <div className={`w-16 h-16 bg-${service.color}/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-${service.color}/20 transition-colors group-hover:animate-pulse group-hover:scale-110 duration-300`}>
-                        <IconComponent className={`h-8 w-8 text-${service.color} transition-transform group-hover:rotate-12`} />
+                  <div
+                    key={index}
+                    className="flex-[0_0_350px] min-w-0 pl-6 animate-fade-in hover:scale-105 transition-all duration-500"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    <div
+                      className={`group h-full p-8 rounded-3xl bg-glass border border-${service.color}/20 hover:border-${service.color}/40 transition-all duration-500 hover:shadow-card-elevated transform hover:-translate-y-2`}
+                    >
+                      <div
+                        className={`w-16 h-16 bg-${service.color}/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-${service.color}/20 transition-colors group-hover:animate-pulse group-hover:scale-110 duration-300`}
+                      >
+                        <IconComponent
+                          className={`h-8 w-8 text-${service.color} transition-transform group-hover:rotate-12`}
+                        />
                       </div>
-                      
+
                       <h3 className="text-2xl font-bold mb-4 group-hover:text-gradient-primary transition-all">
                         {service.title}
                       </h3>
-                      
+
                       <p className="text-text-muted leading-relaxed mb-6">
                         {service.description}
                       </p>
-                      
+
                       <div className="space-y-2">
                         {service.features.map((feature, featureIndex) => (
-                          <div key={featureIndex} className="flex items-center gap-2 transform hover:translate-x-2 transition-transform duration-200" style={{transitionDelay: `${featureIndex * 50}ms`}}>
-                            <div className={`w-2 h-2 bg-${service.color} rounded-full animate-pulse`}></div>
-                            <span className="text-sm text-text-secondary">{feature}</span>
+                          <div
+                            key={featureIndex}
+                            className="flex items-center gap-2 transform hover:translate-x-2 transition-transform duration-200"
+                            style={{
+                              transitionDelay: `${featureIndex * 50}ms`,
+                            }}
+                          >
+                            <div
+                              className={`w-2 h-2 bg-${service.color} rounded-full animate-pulse`}
+                            ></div>
+                            <span className="text-sm text-text-secondary">
+                              {feature}
+                            </span>
                           </div>
                         ))}
                       </div>
-                      
-                      <Button className={`mt-6 w-full bg-${service.color} hover:bg-${service.color}-bright text-white transition-all duration-300 group-hover:shadow-glow-accent hover:scale-105`}>
+
+                      {/* <Button
+                        className={`mt-6 w-full bg-${service.color} hover:bg-${service.color}-bright text-white transition-all duration-300 group-hover:shadow-glow-accent hover:scale-105`}
+                      >
                         Learn More
-                      </Button>
+                      </Button> */}
                     </div>
                   </div>
                 );
@@ -182,8 +308,8 @@ const ServicesCarousel = () => {
                 key={index}
                 className={`w-3 h-3 rounded-full transition-all duration-300 hover:scale-125 ${
                   index === selectedIndex
-                    ? 'bg-golden shadow-glow-primary'
-                    : 'bg-golden/30 hover:bg-golden/50'
+                    ? "bg-golden shadow-glow-primary"
+                    : "bg-golden/30 hover:bg-golden/50"
                 }`}
                 onClick={() => scrollTo(index)}
               />

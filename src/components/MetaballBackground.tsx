@@ -59,9 +59,9 @@ const MetaballBackground = () => {
       specularIntensity: 2.0,
       specularPower: 12,
       fresnelPower: 1.8,
-      backgroundColor: new THREE.Color().setHSL(0.139, 1.0, 0.95), // Soft golden background
-      sphereColor: new THREE.Color().setHSL(0.139, 1.0, 0.55), // Rich golden color
-      lightColor: new THREE.Color().setHSL(0.139, 1.0, 0.6), // Golden light
+      backgroundColor: new THREE.Color().setHSL(0.12, 0.8, 0.15), // Dark yellow background
+      sphereColor: new THREE.Color().setHSL(0.12, 0.9, 0.4), // Dark yellow color
+      lightColor: new THREE.Color().setHSL(0.12, 0.8, 0.5), // Dark yellow light
       lightPosition: new THREE.Vector3(0.8, 1.2, 1.0),
       smoothness: 0.3,
       contrast: 1.6,

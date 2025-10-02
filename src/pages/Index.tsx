@@ -1,11 +1,10 @@
-import Navigation from "@/components/Navigation";
-import Hero from "@/components/Hero";
-import ServicesCarousel from "@/components/ServicesCarousel";
-import HorizontalScrollSection from "@/components/HorizontalScrollSection";
-import Services from "@/components/Services";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import Hero from "@/components/Hero";
+import HorizontalScrollSection from "@/components/HorizontalScrollSection";
+import Navigation from "@/components/Navigation";
+import ServicesCarousel from "@/components/ServicesCarousel";
 
 const Index = () => {
   return (
@@ -14,7 +13,7 @@ const Index = () => {
       <Hero />
       <ServicesCarousel />
       <HorizontalScrollSection />
-      <Services />
+      {/* <Services /> */}
       <About />
       <Contact />
       <Footer />
