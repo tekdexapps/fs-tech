@@ -1,14 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  ArrowRight,
-  Calendar,
-  Mail,
-  MapPin,
-  MessageCircle,
-  Send,
-} from "lucide-react";
+import { ArrowRight, Mail, MapPin, MessageCircle, Send } from "lucide-react";
 
 const Contact = () => {
   const contactInfo = [
@@ -16,7 +9,7 @@ const Contact = () => {
       icon: Mail,
       title: "Email Us",
       content: "info@fstechinc.com",
-      subtext: "Get a response within 2 hours",
+      // subtext: "Get a response within 2 hours",
       color: "emerald",
     },
     // {
@@ -30,7 +23,7 @@ const Contact = () => {
       icon: MapPin,
       title: "Visit Us",
       content: "3034 evita st Orlando FL 32824",
-      subtext: "Schedule a consultation",
+      // subtext: "Schedule a consultation",
       color: "purple",
     },
   ];
@@ -63,7 +56,7 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Contact Form */}
           <div className="bg-glass border-2 border-emerald/20 rounded-3xl p-10">
             <div className="flex items-center gap-3 mb-8">
@@ -165,7 +158,7 @@ const Contact = () => {
             ))}
 
             {/* CTA Card */}
-            <div className="bg-glass border-2 border-orange/20 rounded-3xl p-8">
+            {/* <div className="bg-glass border-2 border-orange/20 rounded-3xl p-8">
               <div className="text-center">
                 <Calendar className="h-12 w-12 text-orange mx-auto mb-6" />
                 <h4 className="text-2xl font-bold mb-4 text-gradient-accent">
@@ -181,7 +174,7 @@ const Contact = () => {
                   Schedule Call
                 </Button>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
