@@ -193,7 +193,7 @@ const ServicesCarousel = () => {
   }, [emblaApi, onInit, onSelect]);
 
   return (
-    <section className="py-24 px-6 relative overflow-hidden">
+    <section id="services" className="py-24 px-6 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-grid opacity-50"></div>
       <div className="absolute top-20 left-20 w-32 h-32 bg-golden/10 rounded-full blur-3xl animate-float"></div>
